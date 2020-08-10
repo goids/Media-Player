@@ -23,7 +23,62 @@
     </main>
 
     <script>
+      const video = document.querySelector('video');
+      const button = document.querySelector('button');
+
+      //Crearemos una clase en JS, como sabemos son prototipos
+      function MediaPlayer(config){
+        this.media = config.el
+      }
+
+      MediaPlayer.prototype.play = function(){
+        this.media.play();
+      }
+
+      MediaPlayer.prototype.pause = function(){
+        this.media.pause();
+      }
+
+      MediaPlayer.prototype.activeVideo = function(){
+        if(this.media.paused){
+          this.media.play();
+        }else if(this.media.played){
+          this.media.pause();
+        }
+        //Ternario 
+        //(this.media.paused) ? this.media.play() : this.media.pause();
+      }
+
+      const player = new MediaPlayer({el: video});
+
+      button.onclick = () => player.activeVideo(); 
       
+      //CLASE ESCRITA CON CLAS CLASES EN JS DE ES6
+      
+      /*class ReproductorDeVideo {
+        constructor(config){
+          this.video = config.el;
+        }
+
+        play(){
+          this.video.play();
+        }
+
+        pause(){
+          this.video.pause();
+        }
+
+        togglePlay(){
+          if(this.video.paused){
+            this.play();
+          }else if(this.video.played){
+            this.pause();
+          }
+        }
+      }
+
+      const videoPlay = new ReproductorDeVideo({el:video});
+      button.onclick = () => videoPlay.togglePlay();*/
     </script>
   </body>
 </html>
