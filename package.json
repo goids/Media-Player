@@ -1,0 +1,25 @@
+{
+  "name": "mediaplayer",
+  "version": "1.0.0",
+  "description": "Meadia player construido en el cursos Profesional de JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "start" : "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goids/Media-Player.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "goide",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goids/Media-Player/issues"
+  },
+  "homepage": "https://github.com/goids/Media-Player#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
