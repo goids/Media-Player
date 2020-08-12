@@ -1,11 +1,20 @@
 import MediaPlayer from './MediaPlayer.js';
+import AuntoPlay from './plugins/AutoPlay.js';
 
 const video = document.querySelector('video');
-const player = new MediaPlayer({el: video});
+const player = new MediaPlayer(
+    {   
+        el: video, 
+        plugins: [
+            new AuntoPlay()
+        ]
+    });
 const button = document.querySelector('button');
+const mute = document.querySelector('#mute');
 
 
 button.onclick = () => player.activeVideo(); 
+mute.onclick = () => player.activeSound();
 
 /**
  * IIFE
@@ -98,3 +107,5 @@ button.onclick = () => player.activeVideo();
 
 const videoPlay = new ReproductorDeVideo({el:video});
 button.onclick = () => videoPlay.togglePlay();*/
+
+// () ejecutamos una funcion, sin los parentesis solo la estamos llamando o pasando la funcion
