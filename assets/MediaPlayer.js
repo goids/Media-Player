@@ -7,9 +7,40 @@ function MediaPlayer(config){
 }
 
 MediaPlayer.prototype._initPlugins = function(){
+    /**
+     * Vamos a trabajar con Get y Set para saber que funcionalidades le queeremos pasar a nuestros plugins
+     * En este caso solo nos interesa que el plugin autoplay, solo tenga la funcionadalida de Mute/Play
+     */
+    
+    const player = {
+        play: () => this.play(),
+        pause: () => this.pause(),
+        media: this.media,
+        self: console.log(this), //this es MediaPlayer fuera del get
+        get muted(){
+            console.log(this); // this es el objeto player dentro de la funcion get, o sea es el objeto más cernado
+            return this.media.muted;
+        },
+        set muted(bool){
+            this.media.muted = bool;
+            /** 
+            * Esto se puede escribir más simple de la manera que lo teneemos arriba pero es algo similar 
+            
+            if (bool) {
+                this.media.muted = true;
+            } else {
+                this.media.muted = false;
+            }*/
+        }
+    }
+
     this.plugins.forEach(plugin => {
-        plugin.run(this);
+        plugin.run(player);
     });
+
+    /*this.plugins.forEach(plugin => {
+        plugin.run(this); // CON THIS ESTAMOS PASANDO TODAS LAS FUNCIONALIDADES AL PLUGIN
+    });*/
 }
 
 MediaPlayer.prototype.play = function(){
