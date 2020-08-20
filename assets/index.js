@@ -18,6 +18,10 @@ const mute = document.querySelector('#mute');
 button.onclick = () => player.activeVideo(); 
 mute.onclick = () => player.activeSound();
 
+if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/sw.js').catch(error => console.log(error.message));
+}
+
 /**
  * IIFE
  * Inmmediately-invoked function expressions, expresion funcional que se ejecutra inmediatamente
